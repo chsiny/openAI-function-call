@@ -6,6 +6,8 @@ from termcolor import colored
 
 GPT_MODEL = "gpt-3.5-turbo-0613"
 
+# openai.api_key = "https://api.makedesygner.xyz"
+
 @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
 def chat_completion_request(messages, tools=None, tool_choice=None, model=GPT_MODEL):
     headers = {
@@ -100,12 +102,14 @@ tools = [
     },
 ]
 
-# messages = []
-# messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
-# messages.append({"role": "user", "content": "What's the weather like today"})
-# chat_response = chat_completion_request(
-#     messages, tools=tools
-# )
+messages = []
+messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
+messages.append({"role": "user", "content": "What's the weather like today"})
+chat_response = chat_completion_request(
+    messages, tools=tools
+)
+print(chat_response.json())
 # assistant_message = chat_response.json()["choices"][0]["message"]
 # messages.append(assistant_message)
-# assistant_message
+# print(assistant_message)
+
