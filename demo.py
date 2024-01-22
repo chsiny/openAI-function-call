@@ -34,8 +34,12 @@ def chat_completion_request(messages, tools=None, tool_choice=None, model=gpt_mo
         print("Unable to generate ChatCompletion response")
         print(f"Exception: {e}")
         return e
-    
-def pretty_print_conversation(messages):
+
+def pretty_print_conversation(messages: str) -> None:
+    """
+    pretty print the message logs
+    """
+
     role_to_color = {
         "system": "red",
         "user": "green",
@@ -55,6 +59,7 @@ def pretty_print_conversation(messages):
         elif message["role"] == "tool":
             print(colored(f"function ({message['name']}): {message['content']}\n", role_to_color[message["role"]]))
 
+# list of functions
 tools = [
     {
         "type": "function",
@@ -94,13 +99,13 @@ tools = [
         "type": "function",
         "function": {
             "name": "get_designs",
-            "description": "Get designs",
+            "description": "Get design names of the company",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "company": {
                         "type": "string",
-                        "description": "The company name, e.g. desygner",
+                        "description": "The company name, e.g. Desygner",
                     }
                 },
                 "required": ["company"]
@@ -109,14 +114,24 @@ tools = [
     },
 ]
 
-def hello(text):
+def hello(text: str) -> str:
+    """
+    A simple test function to say hello with passed text
+    """
     hello = "Hello, " + text
+
     return hello
 
-def call_chatgpt_with_functions(messages):
+def call_chatgpt_with_functions(messages: list(dict[str: str])) -> list(dict[str: str]):
+    """
+    ask chatgpt to call functions
+    """
+
     # messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
-    messages.append({"role": "system", "content": "Perform function request for the user"})
-    messages.append({"role": "user", "content": "Hello, I would like to call the hello function passing the string 'It's me'"})
+    # messages.append({"role": "system", "content": "Perform function request for the user"})
+    # messages.append({"role": "user", "content": "Hello, I would like to call the hello function passing the string 'It's me'"})
+
+    # call chatgpt with config message and prompt
     chat_response = chat_completion_request(
         messages, tools=tools
     )
@@ -129,6 +144,10 @@ def call_chatgpt_with_functions(messages):
         if tool_call["function"]["name"] == "hello":
             arguments = tool_call["function"]["arguments"]
             content = hello(json.loads(arguments)["text"])
+
+        if tool_call["function"]["name"] == "get_designs":
+            arguments = tool_call["function"]["arguments"]
+            content = desygner.get_designs(json.loads(arguments)["company"])
 
     messages.append(chat_response.json()["choices"][0]["message"])
 
@@ -148,7 +167,8 @@ def call_chatgpt_with_functions(messages):
 
     return messages
 
-
 messages = []
+messages.append({"role": "system", "content": "Perform function request for the user"})
+messages.append({"role": "user", "content": "I would like to get all the design names of Desygner"})
 
 pretty_print_conversation(call_chatgpt_with_functions(messages))

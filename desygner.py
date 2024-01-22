@@ -36,8 +36,8 @@ def get_invoices(company: str):
         print(f"An error occurred: {e}")
         return None
     
-def get_designs(company):
-    api_url = f"https://api.makedesygner.xyz/brand/companies/{company}/designs"
+def get_designs(company: str) -> str:
+    api_url = f"https://api.qadesygner.xyz/brand/companies/{company}/designs"
     try:
         # Define the headers with authorization information
         headers = {
@@ -48,10 +48,16 @@ def get_designs(company):
         # Make a GET request to the API with the specified headers
         response = requests.get(api_url, headers=headers)
 
+        output = ""
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Parse and return the JSON data from the response
-            return response.json()
+            designs = response.json()
+            for idx, design in enumerate(designs):
+                output += f"{idx + 1}. {design['name']}\n"
+
+            return output
+
         else:
             # Print an error message if the request was not successful
             print(f"Error: {response.status_code}")
@@ -61,3 +67,4 @@ def get_designs(company):
         print(f"An error occurred: {e}")
         return None
 
+# print(get_designs("desygner"))
