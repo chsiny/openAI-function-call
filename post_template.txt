@@ -1,0 +1,16 @@
+{
+    "is_deleted": false,
+    "is_linked": false,
+    "smart_asset": [],
+    "is_under_review": false,
+    "is_smart_asset": false,
+    "id": 823838,
+    "type": "Palette",
+    "data": {
+        "id": 4387,
+        "name": "Add Palette Test",
+        "colors": []
+    },
+    "order": 1,
+    "tags": []
+}

@@ -105,10 +105,64 @@ tools = [
                 "properties": {
                     "company": {
                         "type": "string",
-                        "description": "The company name, e.g. Desygner",
+                        "description": "The company name, e.g. desygner",
                     }
                 },
                 "required": ["company"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "post_palette",
+            "description": "add a new palette for the company",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The palettes name, e.g. christmas",
+                    },
+                },
+                "required": ["company"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "post_palette_with_colors",
+            "description": "add a new palette for the company with specific colors",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    },
+                    "colors": {
+                        "type": "array",
+                        "description": "A list of rgb, e.g. [(255, 240, 240), (255, 0, 240), (255, 240, 0), (255, 240, 100), (100, 240, 240), (0, 240, 240)]",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The palettes name, e.g. christmas",
+                    },
+                },
+                "required": ["company", "colors"]
             },
         }
     },
@@ -136,6 +190,8 @@ def call_chatgpt_with_functions(messages: list(dict[str: str])) -> list(dict[str
         messages, tools=tools
     )
 
+    # print(chat_response.json())
+
     wants_to_use_function = chat_response.json()["choices"][0]["finish_reason"] == "tool_calls"
     content = ""
 
@@ -149,8 +205,23 @@ def call_chatgpt_with_functions(messages: list(dict[str: str])) -> list(dict[str
             arguments = tool_call["function"]["arguments"]
             content = desygner.get_designs(json.loads(arguments)["company"])
 
-    messages.append(chat_response.json()["choices"][0]["message"])
+        if tool_call["function"]["name"] == "post_palette":
+            arguments = tool_call["function"]["arguments"]
+            content = desygner.post_palette(
+                json.loads(arguments)["company"],
+                json.loads(arguments)["name"]
+            )
+            
+        if tool_call["function"]["name"] == "post_palette_with_colors":
+            arguments = tool_call["function"]["arguments"]
+            content = desygner.post_palette_with_colors(
+                json.loads(arguments)["company"],
+                json.loads(arguments)["colors"],
+                json.loads(arguments)["name"]
+            )
 
+    messages.append(chat_response.json()["choices"][0]["message"])
+    # print(chat_response.json()["choices"][0]["message"])
     tool_message = {
             "role": "tool",
             "name": tool_call["function"]["name"],
@@ -162,13 +233,13 @@ def call_chatgpt_with_functions(messages: list(dict[str: str])) -> list(dict[str
     new_response = chat_completion_request(
         messages, tools=tools
     )
-
+    # print(new_response.json())
     messages.append(new_response.json()["choices"][0]["message"])
 
     return messages
 
 messages = []
-messages.append({"role": "system", "content": "Perform function request for the user"})
-messages.append({"role": "user", "content": "I would like to get all the design names of Desygner"})
+messages.append({"role": "system", "content": "Perform function request for the user. Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
+messages.append({"role": "user", "content": "I would like to add a new palettes for 1 with palette named gpt_generated with the following colors (255, 240, 240), (255, 0, 240), (255, 240, 0), (255, 240, 100), (100, 240, 240), (0, 240, 240)"})
 
 pretty_print_conversation(call_chatgpt_with_functions(messages))
