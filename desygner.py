@@ -7,11 +7,12 @@ load_dotenv()
 
 api_key = os.environ.get("DESYGNER_API_TOKEN")
 
-def get_invoices(company: str):
+def get_invoices(company: str) -> str | None:
     """
     Get the invoices info of the company
 
     @company: domain name
+    @return: 
     """
     api_url = f"https://api.makedesygner.xyz/brand/companies/{company}/invoices"
     try:
@@ -27,7 +28,7 @@ def get_invoices(company: str):
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Parse and return the JSON data from the response
-            print(response.json())
+            return response.json()
         else:
             # Print an error message if the request was not successful
             print(f"Error: {response.status_code}")
@@ -206,8 +207,3 @@ def post_palette_with_colors(
         # Handle exceptions, such as network errors
         print(f"An error occurred: {e}")
         return None
-    
-# print(post_palette_with_colors(
-#     "1", [(255, 240, 240), (255, 0, 240), (255, 240, 0), (255, 240, 100),
-#           (100, 240, 240), (0, 240, 240)], "with_color_test2"
-#     ))

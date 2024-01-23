@@ -10,9 +10,3 @@ def rgb_to_color_code(rgb: tuple[int]):
 
 def rgb_to_hex(rgb: tuple):
     return "#%02x%02x%02x" % rgb
-
-
-# print(rgb_to_color_code((255, 240, 240)))
-
-# 15790335
-# 255,240,240

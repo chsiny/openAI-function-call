@@ -180,7 +180,7 @@ def call_chatgpt_with_functions(messages: list(dict[str: str])) -> list(dict[str
     """
     ask chatgpt to call functions
     """
-
+    # Example prompts
     # messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
     # messages.append({"role": "system", "content": "Perform function request for the user"})
     # messages.append({"role": "user", "content": "Hello, I would like to call the hello function passing the string 'It's me'"})
