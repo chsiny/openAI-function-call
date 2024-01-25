@@ -7,13 +7,16 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 from termcolor import colored
 from dotenv import load_dotenv
 
+# Load configuration
 load_dotenv()
-
 gpt_model = os.environ.get("GPT_MODEL")
 api_key=os.environ.get("OPENAI_API_KEY")
 
 @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
 def chat_completion_request(messages, tools=None, tool_choice=None, model=gpt_model):
+    """
+    Request OpenAI api
+    """
     headers = {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + api_key,
