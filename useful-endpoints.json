@@ -1,0 +1,143 @@
+{
+    "background remover": {
+        "/brand/companies/{domain}/background-removal": ["post"],
+        "/brand/companies/{domain}/background-removal/download/{imageId_id}": ["get"]
+    },
+    "campaigns": {
+        "/brand/companies/{domain}/campaigns-folders/root/children": ["get"],
+        "/brand/companies/{domain}/campaigns-folders": ["post"],
+        "/brand/companies/{domain}/campaigns-folders/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/campaigns/{collection_id}/formats": ["get", "post"],
+        "/brand/companies/{domain}/campaigns/{collection_id}/formats/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/campaigns/{collection_id}/templates": ["get", "post"],
+        "/brand/companies/{domain}/campaigns/{collection_id}/templates/{template_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/campaigns/{collection_id}": ["get"],
+        "/brand/companies/{domain}/campaigns": ["get", "post"],
+        "/brand/companies/{domain}/campaigns/{entity_id}": ["put", "delete", "patch"]
+    },
+    "user design folders": {
+        "/brand/companies/{domain}/designs-folders/root/children": ["get", "put", "post", "delete"],
+        "/brand/companies/{domain}/designs-folders/{entity_id}/children": ["get", "put", "post", "delete"],
+        "/brand/companies/{domain}/designs-folders/{entity_id}/resources": ["get", "put", "post", "delete"],
+        "/brand/companies/{domain}/designs-folders": ["post"],
+        "/brand/companies/{domain}/designs-folders/{entity_id}": ["get", "put", "delete"]
+    },
+    "formats": {
+        "/brand/companies/{domain}/campaigns/{collection_id}/formats": ["get", "post"],
+        "/brand/companies/{domain}/campaigns/{collection_id}/formats/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/formats/{format_id}/templates": ["get"],
+        "/brand/companies/{domain}/formats": ["get"],
+        "/brand/companies/{domain}/formats/{entity_id}": ["get", "put", "post", "patch"]
+    },
+    "image grid": {
+        "business/image-grids/{layoutNumber_id}": ["get"]
+    },
+    "markeyplace": {
+        "/business/marketplace/providers": ["get"],
+        "/business/marketplace/search": ["get"],
+        "/business/marketplace/search/{itemType_id}": ["get"],
+        "/business/marketplace/licences": ["get"],
+        "/business/marketplace/licences/{oneOff_id}": ["get"]
+    },
+    "placeholders": {
+        "/brand/companies/{domain}/placeholders": ["get"],
+        "/brand/companies/{domain}/placeholders/me": ["get"],
+        "/brand/placeholders": ["get"]
+    },
+    "projects": {
+        "/business/projects/{entity_id}/pages/{pageId_id}": ["get", "put", "delete", "patch"],
+        "/business/projects/{entity_id}/pages/{pageId_id}/version": ["post"],
+        "/business/projects/{entity_id}/pages/{pageId_id}/versions": ["get"],
+        "/business/projects/{entity_id}/pages": ["post"],
+        "/business/projects/{entity_id}": ["put", "patch"],
+        "/business/projects/{entity_id}/images": ["get"],
+        "/business/projects/{entity_id}/download": ["post"]
+    },
+    "print order": {
+        "/business/print-order": ["post"],
+        "/business/print-order/{entity_id}": ["put", "patch"]
+    },
+    "template and element permissions": {
+        "/brand/companies/{domain}/designs/{entity_id}/permissions": ["get"],
+        "/brand/companies/{domain}/designs/{design_id}/permissions": ["post"],
+        "/brand/companies/{domain}/designs/{design_id}/permissions/{entity_id}": ["delete"],
+        "/brand/companies/{domain}/templates/{template_id}/elementpermissions": ["get", "post"],
+        "/brand/companies/{domain}/templates/{template_id}/elementpermissions/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/templates/{template_id}/templatepermissions/me": ["get"],
+        "/brand/companies/{domain}/templates/{template_id}/templatepermissions": ["get", "post"],
+        "/brand/companies/{domain}/templates/{template_id}/templatepermissions/{entity_id}": ["put", "delete", "patch"]
+    },
+    "user designs": {
+        "/brand/companies/{domain}/designs": ["get", "post"],
+        "/brand/companies/{domain}/designs-folders/root/resources": ["get"],
+        "/brand/companies/{domain}/designs/{design_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/designs/{design_id}/downloads": ["put"]
+    },
+    "user library assets": {
+        "/brand/companies/{domain}/library/audio": ["get", "post"],
+        "/brand/companies/{domain}/library/audio/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/colors": ["get", "post"],
+        "/brand/companies/{domain}/library/colors/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/contents": ["get", "post"],
+        "/brand/companies/{domain}/library/contents/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/files": ["get", "post"],
+        "/brand/companies/{domain}/library/files/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/folders": ["get", "post"],
+        "/brand/companies/{domain}/library/folders/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/library/folders/{entity_id}/resources": ["get"],
+        "/brand/companies/{domain}/library/fonts": ["get", "post"],
+        "/brand/companies/{domain}/library/fonts/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/library/icons": ["get", "post"],
+        "/brand/companies/{domain}/library/icons/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/images": ["get", "post"],
+        "/brand/companies/{domain}/library/images/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/logos": ["get", "post"],
+        "/brand/companies/{domain}/library/logos/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/palettes": ["get", "post"],
+        "/brand/companies/{domain}/library/palettes/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/texts": ["get", "post"],
+        "/brand/companies/{domain}/library/texts/{entity_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/library/videos": ["get", "post"],
+        "/brand/companies/{domain}/library/videos/{entity_id}": ["put", "delete", "patch"]
+    },
+    "user templates": {
+        "/brand/templates/{entity_id}": ["get"]
+    },
+    "templates": {
+        "/brand/companies/{domain}/templates": ["get"],
+        "/brand/companies/{domain}/templates/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/templates/{entity_id}/download": ["get"],
+        "/brand/companies/{domain}/templates/{entity_id}/translate": ["post"]
+    },
+    "workspace assets": {
+        "/brand/companies/{domain}/assets/colors/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/colors": ["get", "post"],
+        "/brand/companies/{domain}/assets/contents/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/contents": ["get", "post"],
+        "/brand/companies/{domain}/assets/files/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/files": ["get", "post"],
+        "/brand/companies/{domain}/assets/folders": ["get", "post"],
+        "/brand/companies/{domain}/assets/folders/{folder_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/folders/{folder_id}/resources": ["get"],
+        "/brand/companies/{domain}/assets/fonts": ["get", "post"],
+        "/brand/companies/{domain}/assets/fonts/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/icons/{entity_id}": ["get"],
+        "/brand/companies/{domain}/assets/icons": ["get", "post"],
+        "/brand/companies/{domain}/assets/icons/{element_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/images/{entity_id}": ["get"],
+        "/brand/companies/{domain}/assets/images": ["get", "post"],
+        "/brand/companies/{domain}/assets/images/{image_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/logos/{entity_id}": ["get"],
+        "/brand/companies/{domain}/assets/logos": ["get", "post"],
+        "/brand/companies/{domain}/assets/logos/{logo_id}": ["put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/palettes/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/palettes": ["get", "post"],
+        "/brand/companies/{domain}/assets/texts/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/texts": ["get", "post"],
+        "/brand/companies/{domain}/assets/user-inputs/total": ["get"],
+        "/brand/companies/{domain}/assets/user-inputs/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/user-inputs": ["get", "post"],
+        "/brand/companies/{domain}/assets/videos/{entity_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/assets/videos": ["get", "post"]
+    }
+}

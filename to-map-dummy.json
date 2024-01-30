@@ -1,0 +1,22 @@
+{
+  "/brand/companies/{domain}/library/colors": ["get", "post"],
+  "/brand/companies/{domain}/library/colors/{entity_id}": ["put"],
+  "/brand/companies/{domain}/library/fonts": ["get", "post"],
+  "/brand/companies/{domain}/library/fonts/{entity_id}": ["get", "put"],
+  "/brand/companies/{domain}/library/icons": ["get", "post"],
+  "/brand/companies/{domain}/library/icons/{entity_id}": ["put"],
+  "/brand/companies/{domain}/library/images": ["get", "post"],
+  "/brand/companies/{domain}/library/images/{entity_id}": ["put"],
+  "/brand/companies/{domain}/library/logos": ["get", "post"],
+  "/brand/companies/{domain}/library/logos/{entity_id}": ["put"],
+  "/brand/companies/{domain}/library/palettes": ["get", "post"],
+  "/brand/companies/{domain}/library/palettes/{entity_id}": ["put"],
+  "/brand/companies/{domain}/library/texts": ["get", "post"],
+  "/brand/companies/{domain}/library/texts/{entity_id}": ["put"],
+
+  "/business/marketplace/providers": ["get"],
+  "/business/marketplace/search": ["get"],
+  "/business/marketplace/search/{itemType_id}": ["get"],
+
+  "/business/users/me": ["get"]
+}

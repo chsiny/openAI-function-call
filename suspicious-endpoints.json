@@ -1,0 +1,72 @@
+{
+    "content automation": {
+        "/brand/companies/{domain}/content-automations": ["post"],
+        "/brand/companies/{domain}/content-automations/collection": ["post"],
+        "/brand/companies/{domain}/content-automations/template": ["post"],
+        "/brand/companies/{domain}/content-automations/{type_id}/csv": ["get", "post"]
+    },
+    "content linking": {
+        "/brand/companies/{domain}/content-links": ["get", "post"],
+        "/brand/companies/{domain}/content-links/{contentLink_id}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/content-links/{entityType_id}/{entityId_id}": ["get"],
+        "/brand/companies/{domain}/content-links/{entityType_id}/{entityId_id}/root/total": ["get"],
+        "/brand/companies/{domain}/content-links/{entityType_id}/{entityId_id}/root": ["get"]
+    },
+    "dwonload, share and print": {
+        "/brand/consume/{entity_id}/{type_id}": ["get", "put", "post", "delete", "options", "head", "patch", "trace"],
+        "/brand/consume/assets/{resource_id}/{type_id}": ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
+    },
+    "gelato webhook": {
+        "/business/webhook/gelato": ["post"]
+    },
+    "marketing": {
+        "business/event": ["post"]
+    },
+    "messages": {
+        "business/messages/{easynameableType_id}/{easynameableId_id": ["get", "post"]
+    },
+    "user endpoints": {
+        "/business/event/endpoints": ["get"]
+    },
+    "workflow jobs": {
+        "/workflow/companies/{domain}/jobs/{job_id}/inputs": ["get"],
+        "/workflow/companies/{domain}/jobs/{job_id}/inputs/{entity_id}": ["get", "delete"],
+        "/workflow/companies/{domain}/jobs/{job_id}/outputs": ["get"],
+        "/workflow/companies/{domain}/jobs/{job_id}/outputs/{entity_id}": ["get", "delete", "patch"],
+        "/workflow/companies/{domain}/jobs/{job_id}/outputs/{entity_id}/snapshot": ["post"],
+        "/workflow/companies/{domain}/jobs": ["get", "post"],
+        "/workflow/companies/{domain}/jobs/total": ["get"],
+        "/workflow/companies/{domain}/jobs/{entity_id}": ["get", "put", "delete", "patch"],
+        "/workflow/companies/{domain}/jobs/simple": ["post"],
+        "/workflow/companies/{domain}/jobs/{job_id}/history": ["get"],
+        "/workflow/companies/{domain}/jobs/{entity_id}/{state_id}": ["patch"],
+        "/workflow/companies/{domain}/jobs/deleteinput": ["delete"],
+        "/workflow/companies/{domain}/jobs/{entity_id}/subtask/{type_id}": ["post"],
+        "/workflow/companies/{domain}/jobs/fakeauto/{template_id}/{type_id}": ["post"],
+        "/workflow/companies/{domain}/jobs/fakeautoasset/{assetId_id}/{type_id}": ["post"],
+        "/workflow/companies/{domain}/linked-jobs/{alias_id}/{id}": ["get"]
+    },
+    "default": {
+        "/brand/companies/{domain}/background-removal/download/{imageId_id}": ["get"],
+        "/brand/companies/{domain}/content-links/{contentLink_id}": ["delete"],
+        "/brand/companies/{domain}/settings/sso": ["delete"],
+        "/business/background-removal/download/{imageId_id}": ["get"],
+        "/business/image/resize": ["post"],
+        "/business/page-settings/{entityType_id}/{entityId_id}": ["get"],
+        "/business/page-settings/{slug_id}": ["get"],
+        "/business/page-settings": ["post"],
+        "/business/page-settings/{page_id}": ["put", "delete", "patch"],
+        "/business/storage/policy": ["post"],
+        "/business/storage/credentials": ["get"],
+        "/business/users/pro-plus-usage": ["get"],
+        "/defaults/brand/comany/add-ons": ["get"],
+        "/brand/companies/{domain}/linked-workspaces": ["get"],
+        "/brand/companies/oracle/webhook": ["post"],
+        "/brand/companies/{domain}/public/webhook-test": ["post"],
+        "/brand/companies/{domain}/webhook-trigger": ["post"],
+        "/server/webhook/enterprise-linking/{encodedId_id}": ["get", "put", "post", "delete"],
+        "/server/webhook/enterprise-update/{encodedId_id}": ["get", "put", "post", "delete"],
+        "/server/webhook/enterprise-done/{encodedId_id}": ["get", "put", "post", "delete"],
+        "/brand/companies/{domain}/designs-format": ["post"]
+    }
+}

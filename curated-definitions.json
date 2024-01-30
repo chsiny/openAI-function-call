@@ -1,0 +1,1314 @@
+{
+  "/brand/companies/{domain}/library/colors": {
+    "get": {
+      "description": "Returns an array of colors that belong to the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      }
+    },
+    "post": {
+      "description": "Adds a color to the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/colors/{entity_id}": {
+    "put": {
+      "description": "Updates a color in the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/fonts": {
+    "get": {
+      "description": "Returns an array of fonts that belong to this users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "q": {
+            "description": "Search query.",
+            "type": "string"
+          },
+          "in": {
+            "description": "The list of id that must be in the response",
+            "type": "string"
+          },
+          "client": {
+            "description": "Query only client visible fonts.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Add a font to the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/fonts/{entity_id}": {
+    "get": {
+      "description": "Get a single font from a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "put": {
+      "description": "Deletes a font from the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/icons": {
+    "get": {
+      "description": "For getting all icons inside a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "q": {
+            "description": "A term for query the list of results",
+            "type": "string"
+          },
+          "in": {
+            "description": "The list of id's that must be in the response",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "For creating a new element in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/icons/{entity_id}": {
+    "put": {
+      "description": "For editing a element in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/images": {
+    "get": {
+      "description": "For getting all images inside a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "undefined": {
+            "type": "string"
+          },
+          "q": {
+            "description": "A term for query the list of results",
+            "type": "string"
+          },
+          "in": {
+            "description": "The list of id's that must be in the response",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "For creating images in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/images/{entity_id}": {
+    "put": {
+      "description": "For editing an image in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/logos": {
+    "get": {
+      "description": "For getting all logos inside a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "q": {
+            "description": "A term for query the list of results",
+            "type": "string"
+          },
+          "in": {
+            "description": "The list of id's that must be in the response",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "For creating a logo in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/logos/{entity_id}": {
+    "put": {
+      "description": "For editing a logo in a users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/palettes": {
+    "get": {
+      "description": "Returns an array of palettes from the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "q": {
+            "description": "Search query.",
+            "type": "string"
+          },
+          "in": {
+            "description": "The list of id that must be in the response",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Creates a palette in the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/palettes/{entity_id}": {
+    "put": {
+      "description": "Updates a palette in the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/texts": {
+    "get": {
+      "description": "Returns an array of text assets that belong to this users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "q": {
+            "description": "Search query.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post": {
+      "description": "Adds a text asset to the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "payload": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "default_content": {
+                    "type": "string"
+                  }
+                }
+              },
+              "order": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/brand/companies/{domain}/library/texts/{entity_id}": {
+    "put": {
+      "description": "Updates a text asset in the users library. User Library Assets",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "resource_id"
+        ],
+        "properties": {
+          "payload": {
+            "properties": {
+              "licence": {
+                "$ref": "#/components/schemas/ResourceLicence2"
+              },
+              "is_linked": {
+                "type": "boolean"
+              },
+              "smart_asset": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "is_under_review": {
+                "type": "boolean"
+              },
+              "is_smart_asset": {
+                "type": "boolean"
+              },
+              "sso_source": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "data_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "$ref": "#/components/schemas/Placeholder2"
+              },
+              "licences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResourceLicence2"
+                }
+              },
+              "order": {
+                "type": "integer"
+              },
+              "libraries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "folder": {
+                "type": "integer"
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group2"
+                }
+              },
+              "tags": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "flags": {
+                "type": "integer"
+              },
+              "deleted_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "type": "object"
+          },
+          "resource_id": {
+            "description": "The resource id for the entity",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/business/marketplace/providers": {
+    "get": {
+      "description": "Marketplace",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      }
+    }
+  },
+  "/business/marketplace/search": {
+    "get": {
+      "description": "Marketplace",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      }
+    }
+  },
+  "/business/marketplace/search/{itemType_id}": {
+    "get": {
+      "description": "Marketplace",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "itemType"
+        ],
+        "properties": {
+          "itemType": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "/business/users/me": {
+    "get": {
+      "description": "Return current user. User Account Management",
+      "parameters": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      }
+    }
+  }
+}

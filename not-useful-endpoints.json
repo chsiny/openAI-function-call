@@ -1,0 +1,202 @@
+{
+    "affiliates and coupons": {
+        "/brand/companies/{copy_to_domain}/designs": ["post"],
+        "/admin/affiliation/adminaffiliates": ["get"],
+        "/admin/affiliation/adminaffiliates/{entity_id}/plans": ["post"],
+        "/admin/affiliation/adminaffiliates/{entity_id}/withdraw": ["post"],
+        "/admin/affiliation/adminaffiliationplans": ["get"],
+        "/admin/affiliation/adminsubscriptiondiscountcampaigns": ["get"],
+        "/admin/affiliation/adminsubscriptiondiscounttypes": ["get"],
+        "/affiliation/expense": ["get"],
+        "/affiliation/funding": ["get"],
+        "/business/fundingsource/coupons/{entity_id}": ["get", "put", "patch"],
+        "/affiliation/fundingsource/onboardingactions": ["get"],
+        "/business/fundingsource/onboardingactions": ["get"],
+        "/affiliation/subscriptiondiscountcampaigns": ["get", "post"],
+        "/affiliation/subscriptiondiscountcampaigns/{entity_id}": ["put", "delete", "patch"],
+        "/affiliation/subscriptiondiscountcampaigns/{entity_id}/tokens": ["get", "post"],
+        "/affiliation/subscriptiondiscounttypes": ["get"]
+    },
+    "api authorization": {
+        "/brand/companies/{domain}/api-auth": ["get", "post", "delete"]
+    },
+    "api documentation": {
+        "/doc": ["get"],
+        "/doc/{area_id}": ["get"]
+    },
+    "batch": {
+        "/business/batch": ["post"]
+    },
+    "bucket": {
+        "/brand/companies/{domain}/buckets/active": ["get", "delete"],
+        "/brand/defaultbuckets": ["get"]
+    },
+    "email": {
+        "/business/email-configuration/{token_id}/{email_id}/flags": ["put", "patch"],
+        "/business/email-configuration/{token_id}/{email_id}/language": ["put", "patch"],
+        "/business/email/send-validation": ["get"],
+        "/business/email/send-validation/{email_id}": ["post"],
+        "/system/emails": ["get", "post"],
+        "/system/emails/{entity_id}": ["get", "put", "delete", "patch"]
+    },
+    "enterprise management": {
+        "/brand/companies/{domain}/memberships/{user_id}/companies": ["get"],
+        "/brand/companies/{domain}/search": ["get"],
+        "/brand/companies/{domain}/me": ["get"]
+    },
+    "workspace navigation": {
+        "https://[{host_id}.]desygner.com/workspace/{domain}/": ["get"]
+    },
+    "groups": {
+        "/brand/companies/{domain}/groups": ["get", "post"],
+        "/brand/companies/{domain}/groups/{entity_id}": ["put", "delete", "patch"],
+        "/brand/defaultgroups": ["get"]
+    },
+    "invoices": {
+        "/brand/companies/{domain}/invoices": ["get"],
+        "/brand/companies/{domain}/invoices/me": ["get"],
+        "/payment/profiles/invoices": ["get"]
+    },
+    "ip address": {
+        "/business/ip-lookup": ["get"]
+    },
+    "payment plans": {
+        "/payment/prices/plans": ["get"],
+        "/payment/prices/plans/{plan_id}": ["get"],
+        "/payment/prices/bucket-actions": ["get"],
+        "/payment/prices/{version_id}/bucket-actions": ["get"],
+        "/payment/prices/plans/{plan_id}/{interval_id}": ["get"],
+        "/payment/prices/products": ["get"],
+        "/payment/prices/products/{oneOff_id}": ["get"]
+    },
+    "payment gateways": {
+        "/business/fundingsource/coupons/{entity_id}": ["put"],
+        "/brand/companies/{domain}/memberships/me/paymentprofiles": ["get"],
+        "/brand/companies/{domain}/paymentprofiles": ["get"],
+        "/brand/companies/{domain}/paymentprofiles/me": ["get"],
+        "/brand/companies/{domain}/paymentprofiles/{paymentProfile_id}": ["delete"],
+        "/brand/companies/{domain}/paymentbuckets/{bucket_id}/payables": ["get"],
+        "/brand/companies/{domain}/subscriptions": ["put", "patch"],
+        "/brand/companies/{domain}/paymentprofile/{entity_id}": ["put", "patch"],
+        "/payment/gateway/google-wallet/process": ["post"],
+        "/payment/gateway/itunes/process": ["post"],
+        "/payment/gateway/stripe/process": ["post"],
+        "/payment/gateway/stripe/{account_id}/customer/info": ["get"],
+        "/payment/gateway/stripe/{account_id}/setup-intent": ["post"],
+        "/payment/gateway/stripe/{account_id}/checkout/user-info": ["post"],
+        "/payment/gateway/stripe/{account_id}/cards": ["put", "post"],
+        "/payment/gateway/stripe/{account_id}/coupons/{id}": ["get"],
+        "/payment/offer/{entity_id}": ["get"],
+        "/payment/profiles/me": ["get", "delete"],
+        "/payment/profiles/{entity_id}": ["delete"],
+        "/payment/profiles/me/flavour": ["delete"],
+        "/payment/gateway/google-wallet/webhook": ["get", "put", "post", "delete", "options", "head", "patch", "trace"],
+        "/payment/gateway/itunes/webhook": ["get", "put", "post", "delete", "options", "head", "patch", "trace"],
+        "/payment/gateway/stripe/webhook/connect/{account_id}": ["post"],
+        "/payment/gateway/stripe/webhook/{account_id}": ["post"]
+    },
+    "user authorization": {
+        "https://[{host_id}.]desygner.com/untidy-api/login-bridge": ["post"],
+        "/business/users/login": ["post"],
+        "/business/users/forgot-password": ["post"]
+    },
+    "user registration": {
+        "/business/users": ["post"],
+        "/business/users/{domain}/automation-onboarding": ["get"],
+        "/business/users/automation-onboarding/stop/{type_id}": ["delete"]
+    },
+    "user account management": {
+        "/brand/companies/{domain}/memberships/me/settings": ["get", "put", "patch"],
+        "/business/address": ["get", "post"],
+        "/business/address/{entity_id}": ["get", "put", "delete", "patch"],
+        "/business/users/me": ["get", "put", "delete", "patch"]
+    },
+    "workspace user management": {
+        "/brand/companies/{domain}/memberships": ["get", "post"],
+        "/brand/companies/{domain}/memberships/total": ["get"],
+        "/brand/companies/{domain}/memberships/me": ["get"],
+        "/brand/companies/{domain}/memberships/{type_id}": ["get"],
+        "/brand/companies/{domain}/memberships/{user_id}": ["put", "delete", "patch"]
+    },
+    "status": {
+        "/status": ["get"]
+    },
+    "workspace management": {
+        "/brand/companies": ["get", "post"],
+        "/brand/companies/{domain}": ["get", "put", "delete", "patch"],
+        "/brand/companies/{domain}/request-payment": ["post"]
+    },
+    "workspace feed": {
+        "/brand/companies/{domain}/feed": ["get"],
+        "/brand/companies/{domain}/notifications": ["get"],
+        "/brand/companies/{domain}/notifications/total": ["get"],
+        "/brand/companies/{domain}/notifications/{feed_id}": ["put", "patch"]
+    },
+    "global navigation arguments": {
+        "https://[{host_id}.]desygner.com/editor": ["get"],
+        "https://[{host_id}.]desygner.com/create/[{landing_format}/]": ["get"]
+    },
+    "open join": {
+        "/brand/companies/{domain}/access/{token_id}": ["get"],
+        "/brand/companies/{domain}/access": ["post"],
+        "/brand/companies/{domain}/access/{user_id}": ["put", "patch"]
+    },
+    "tag.ai": {
+        "/brand/companies/{domain}/ai": ["post"],
+        "/brand/companies/{domain}ai/logo": ["post"]
+    },
+    "websites": {
+        "/brand/companies/{domain}/designs/{design_id}/webpages": ["put", "delete"]
+    },
+    "the hub": {
+        "/brand/companies/{domain}/hub/source-configurations": ["get", "post"],
+        "/brand/companies/{domain}/hub/source-configurations/{entity_id}": ["put", "delete"],
+        "/brand/companies/{domain}/hub/sources": ["get"],
+        "/brand/companies/{domain}/hub/threads/me": ["get"],
+        "/brand/companies/{domain}/hub/threads/{alias_id}": ["get"],
+        "/brand/companies/{domain}/hub/threads": ["post"],
+        "/brand/companies/{domain}/hub/threads/{entity_id}": ["put", "delete"]
+    },
+    "hub": {
+        "/brand/companies/{domain}/hub/webhook/{sourceConfiguration_id}": ["post"],
+        "/brand/companies/{domain}/hub/webhook/{sourceConfiguration_id}/{reference_id}": ["put", "delete"]
+    },
+    "tag.user_onboarding": {
+        "/brand/companies/{domain}/onboarding-steps": ["get"],
+        "/brand/companies/{domain}/onboarding-steps/{step_id}": ["delete"]
+    },
+    "workspace settings": {
+        "/brand/companies/{domain}/settings": ["get", "put"]
+    },
+    "tag.translations": {
+        "/brand/companies/{domain}/translations": ["post"]
+    },
+    "pdf viewer": {
+        "/business/pages/{entity_id}/parse": ["post"],
+        "/business/pages/{entity_id}/{format_id}/render": ["post"]
+    },
+    "figma import": {
+        "/business/pdf/post-svg": ["post"],
+        "/business/pdf/svg-as-url": ["post"]
+    },
+    "stats": {
+        "/business/stats/workspace/{domain}/dashboard/{type_id}": ["get"],
+        "/business/stats/workspace/{domain}/memberships": ["get"],
+        "/business/stats/workspace/{domain}/templates": ["get"],
+        "/business/stats/workspace/{domain}/metric": ["get"]
+    },
+    "eps split": {
+        "/business/vectors/parts": ["post"]
+    },
+    "monday.com": {
+        "/brand/companies/monday/webhook": ["post"],
+        "/brand/companies/monday/webhook/subscribe/{topic_id}": ["post"],
+        "/brand/companies/monday/webhook/unsubscribe": ["post"],
+        "/brand/companies/monday/webhook/action/{action_id}": ["post"],
+        "/barnd/companies/monday/webhook/application": ["post"]
+    },
+    "snapshots": {
+        "/snapshots/{version_id}": ["get"],
+        "/sanpshots/{endpoint_id}": ["get", "post"]
+    }
+}
