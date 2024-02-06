@@ -1,9 +1,10 @@
 import json
-from urllib.parse import urlencode
 import re
 import requests
 import os
+from urllib.parse import urlencode
 
+# Load OpenAPI schema, mapping, definitions, etc.
 with open("json/open-api.json", 'r') as f:
     open_api_schema = json.load(f)
 
@@ -22,23 +23,23 @@ extended_data = {}
 def extract_open_ai_parameter_definition(parameters, request_body):
     properties = {}
     required = []
-    payload_schema = (
-        request_body
-        and request_body.get('content', {}).get('application/json', {}).get('schema', {})
-        and request_body['content']['application/json']['schema'].get('$ref')
-    )
 
+    # Extract payload schema if present
+    payload_schema = request_body and request_body.get('content', {}).get('application/json', {}).get('schema', {})
     if payload_schema:
         properties['payload'] = get_schema_path(payload_schema)
 
+    # Extract parameters
     for parameter in parameters or []:
+        name = parameter.get('name', '')
+
         # Use get method to handle cases where 'schema' or 'type' keys are not present
         schema = parameter.get('schema', {})
         parameter_type = schema.get('type') if 'type' in schema else parameter.get('type', '')
 
-        name = parameter.get('name', '')
+        # Handle domain parameter
         if name == 'domain' and parameter.get('in') == 'path':
-            continue  # Domain is automatically added under the hood
+            continue
 
         properties[name] = {
             'description': parameter.get('description', ''),
@@ -50,7 +51,6 @@ def extract_open_ai_parameter_definition(parameters, request_body):
 
         if properties[name]['type'] == 'array':
             items = schema.get('items') or parameter.get('items', {})
-
             properties[name]['items'] = {
                 'type': clear_type(items.get('type') or items['schema']['type']),
             }
@@ -58,55 +58,22 @@ def extract_open_ai_parameter_definition(parameters, request_body):
     return {'type': 'object', 'required': required, 'properties': properties}
 
 def extract_open_ai_function_definition(path):
-    description = ''
-
-    if path.get('summary'):
-        description = path['summary']
-
-    if path.get('description'):
-        description = f"{description} {path['description']}" if description else path['description']
-
-    if path.get('tags'):
-        description = f"{description} {' '.join(path['tags'])}"
+    description = path.get('summary', '')
+    description += f" {path.get('description', '')}" if description else path.get('description', '')
+    description += f" {' '.join(path['tags'])}" if path.get('tags') else ''
 
     return {'description': description.strip(), 'parameters': extract_open_ai_parameter_definition(path.get('parameters'), path.get('requestBody'))}
 
 def get_schema_path(path):
-    parts = path.split('/')
-    key = parts.pop(0)
-    root = open_api_schema
+    parts = []
+    root = path
 
-    for key in parts:
-        # Handle 'definitions' or 'components' key in your OpenAPI schema
-        root = root.get(key, root)
+    while isinstance(root, dict):
+        key, root = next(iter(root.items()))
+        parts.append(key)
 
     # Deep clone
     return json.loads(json.dumps(root))
-
-def expand_references(def_, deep=0):
-    for attr, value in def_.items():
-        if attr == '$ref':
-            def_.update(get_schema_path(value))
-            del def_['$ref']
-
-    if deep > 10:
-        return def_
-
-    for attr, value in def_.items():
-        if not isinstance(value, list) and isinstance(value, dict):
-            expand_references(value, deep + 1)
-
-    return def_
-
-def clear_references(def_):
-    properties = def_['properties']
-    def_['properties'] = {}
-
-    for prop, value in properties.items():
-        if '$ref' not in value:
-            def_['properties'][prop] = value
-
-    return def_
 
 def clear_type(type_):
     if type_ == 'int':
@@ -124,7 +91,6 @@ def get_function_name(endpoint, method):
         return match.group(1).upper()
 
     return method + ''.join([re.sub(r'-([a-zA-Z])', replace_dash, s) for s in parts]).capitalize()
-
 
 def get_endpoint_handler(endpoint, method, parameters):
     domain = 'desygner'
@@ -175,6 +141,7 @@ def get_endpoint_handler(endpoint, method, parameters):
 
     return handler
 
+# Build functions and extended_data
 for endpoint, methods in to_map.items():
     if endpoint in useful_api:
         for method in methods:
@@ -200,6 +167,8 @@ for endpoint, methods in to_map.items():
 
 # Export functions
 # functions
+
+# Example usage:
 def pretty_print(data):
     for entry in data:
         print(f"Name: {entry['name']}")
@@ -210,6 +179,6 @@ def pretty_print(data):
         print(f"Function: {entry['function']}")
         print("-----")
 
-# Example usage:
 for entry in functions:
-    print(entry)
+    if entry["name"] == "headCompaniesdesignsfolderschildren":
+        print(entry)

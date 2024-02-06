@@ -24,6 +24,7 @@ class ChatDesygner():
         """
         Sets or resets the conversation to an initial state.
         """
+
         # Load configuration
         load_dotenv()
         self._gpt_model = os.environ.get("GPT_MODEL")
@@ -35,22 +36,24 @@ class ChatDesygner():
             "assistant": "blue",
             "tool": "magenta",
         }
-        self.message = []
-        self.message.append(
+        self.messages = []
+        self.messages.append(
             {"role": "system", "content": "Perform function request for the user. Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."}
         )
 
-    def append_message(self, message: dict[str: object]) -> None:
+    def add_message(self, messages: dict[str: object]) -> None:
         """
-        Append the user message or OpenAI response
+        Append the user messages or OpenAI response
         """
-        self.message.append(message)
+
+        self.messages.append(messages)
 
     @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-    def chat_completion_request(self, messages: list(dict[str, str]), tools=None, tool_choice=None) -> dict[str, str]:
+    def chat_completion_request(self, messages: list(dict[str: str]), tools=None, tool_choice=None) -> dict[str: str]:
         """
         Request OpenAI API to response with messages
         """
+
         headers = {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + self._api_key,
@@ -72,37 +75,38 @@ class ChatDesygner():
             print(f"Exception: {e}")
             return e
 
-    def respond(self, message) -> None:
+    def respond(self, messages) -> None:
         """
         Respond to the user
         """
 
-        print(colored(f"assistant: {message['content']}\n", self._role_to_color[message["role"]]))
+        print(colored(f"assistant: {messages['content']}\n", self._role_to_color[messages["role"]]))
 
-    def pretty_print_conversation(self) -> None:
+    def display_conversation(self) -> None:
         """
-        Pretty print the message logs
+        Print out the whole conversation
         """
 
-        for message in self.message:
-            if message["role"] == "system":
-                print(colored(f"system: {message['content']}\n", self._role_to_color[message["role"]]))
-            elif message["role"] == "user":
-                print(colored(f"user: {message['content']}\n", self._role_to_color[message["role"]]))
-            elif message["role"] == "assistant" and message.get("function_call"):
-                print(colored(f"assistant: {message['function_call']}\n", self._role_to_color[message["role"]]))
-            elif message["role"] == "assistant" and not message.get("function_call"):
-                print(colored(f"assistant: {message['content']}\n", self._role_to_color[message["role"]]))
-            elif message["role"] == "tool":
-                print(colored(f"function ({message['name']}): {message['content']}\n", self._role_to_color[message["role"]]))
+        for messages in self.messages:
+            if messages["role"] == "system":
+                print(colored(f"system: {messages['content']}\n", self._role_to_color[messages["role"]]))
+            elif messages["role"] == "user":
+                print(colored(f"user: {messages['content']}\n", self._role_to_color[messages["role"]]))
+            elif messages["role"] == "assistant" and messages.get("function_call"):
+                print(colored(f"assistant: {messages['function_call']}\n", self._role_to_color[messages["role"]]))
+            elif messages["role"] == "assistant" and not messages.get("function_call"):
+                print(colored(f"assistant: {messages['content']}\n", self._role_to_color[messages["role"]]))
+            elif messages["role"] == "tool":
+                print(colored(f"function ({messages['name']}): {messages['content']}\n", self._role_to_color[messages["role"]]))
 
-    def call_openai_function(self, message: dict[str: str]) -> None:
+    def call_openai_function(self, messages: dict[str: str]) -> None:
         """
         Ask ChatGPT to call OpenAI functions
         """
-        self.append_message(message)
+
+        self.add_message(messages)
         chat_response = self.chat_completion_request(
-            messages=self.message, tools=self._tools
+            messages=self.messages, tools=self._tools
         )
 
         wants_to_use_function = chat_response.json()["choices"][0]["finish_reason"] == "tool_calls"
@@ -111,27 +115,28 @@ class ChatDesygner():
         if wants_to_use_function:
             tool_call_id, function_name, content = self.call_function(chat_response)
 
-        self.append_message(chat_response.json()["choices"][0]["message"])
+        self.add_message(chat_response.json()["choices"][0]["messages"])
         tool_message = {
                 "role": "tool",
                 "name": function_name,
                 "content": content,
                 "tool_call_id": tool_call_id,
             }
-        self.append_message(tool_message)
+        self.add_message(tool_message)
 
         new_response = self.chat_completion_request(
-            messages=self.message, tools=self._tools
+            messages=self.messages, tools=self._tools
         )
-        self.append_message(new_response.json()["choices"][0]["message"])
-        self.respond(new_response.json()["choices"][0]["message"])
+        self.add_message(new_response.json()["choices"][0]["messages"])
+        self.respond(new_response.json()["choices"][0]["messages"])
 
     def call_function(self, chat_response: json) -> (str, str, str):
         """
         Determine which function being called, and return corresponding tool call, 
         function name, and content
         """
-        tool_call = chat_response.json()["choices"][0]["message"]["tool_calls"][0]
+
+        tool_call = chat_response.json()["choices"][0]["messages"]["tool_calls"][0]
         arguments = tool_call["function"]["arguments"]
         function_name = tool_call["function"]["name"]
 
