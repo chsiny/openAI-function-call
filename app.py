@@ -1,4 +1,4 @@
-from chat import *
+from chatDesygner import *
 
 
 if __name__ == '__main__':
@@ -11,6 +11,9 @@ if __name__ == '__main__':
         if user_input == 'c':
             break
 
-        message = {"role": "user", "content": user_input}
-        
-        chat.call_openai_function(message)
+        elif user_input == 'print all':
+            chat.pretty_print_conversation()
+
+        else:
+            message = {"role": "user", "content": user_input}
+            chat.call_openai_function(message)

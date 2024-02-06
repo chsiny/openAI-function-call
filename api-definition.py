@@ -211,4 +211,5 @@ def pretty_print(data):
         print("-----")
 
 # Example usage:
-pretty_print(functions)
+for entry in functions:
+    print(entry)
