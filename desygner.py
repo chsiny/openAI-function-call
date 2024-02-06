@@ -6,6 +6,113 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.environ.get("DESYGNER_API_TOKEN")
+TOOLS = [
+    {
+        "type": "function",
+        "function" : {
+            "name": "hello",
+            "description": "say hi",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string",
+                        "description": "The text passed for saying hello"
+                    }
+                },
+                "required": ["text"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_invoices",
+            "description": "Get Invoices",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    }
+                },
+                "required": ["company"],
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_designs",
+            "description": "Get design names of the company",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    }
+                },
+                "required": ["company"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "post_palette",
+            "description": "add a new palette for the company",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The palettes name, e.g. christmas",
+                    },
+                },
+                "required": ["company"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "post_palette_with_colors",
+            "description": "add a new palette for the company with specific colors",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company": {
+                        "type": "string",
+                        "description": "The company name, e.g. desygner",
+                    },
+                    "colors": {
+                        "type": "array",
+                        "description": "A list of rgb, e.g. [(255, 240, 240), (255, 0, 240), (255, 240, 0), (255, 240, 100), (100, 240, 240), (0, 240, 240)]",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The palettes name, e.g. christmas",
+                    },
+                },
+                "required": ["company", "colors"]
+            },
+        }
+    },
+]
 
 def get_invoices(company: str) -> str | None:
     """
